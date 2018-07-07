@@ -45,23 +45,29 @@ const checkPalindrome = (string) => {
 console.log(sumDigits(42));
 
 
-// Section 4
-const calculateSide = (sideA, SideB) => {
-// find hypotenuse - a2 + b2 = c2
-// use Math.hypot([x[, y[, …]]]) or Math.sqrt(c)?
-// }
+// // Section 4
+const calculateSide = (sideA, sideB) => {
+// figure out sideC - a^2 + b^2 = c^2
+// sqrt(a^2 + b^2)
+  const aSq = sideA * sideA;
+  const bSq = sideB * sideB;
+  const sideC = Math.sqrt(aSq + bSq);
+  return sideC
+}
+console.log(calculateSide(3, 4));
  
-
 console.log(calculateSide(8, 6));
-=> 10
+// => 10
 
 
 // Section 5
 const sumArray = (num) => {
-  for(let sum = 0; i < 6; i++){
+  let sum = 0;
+  for(let i = 0; i < num.length; i++){
     // add numbers in array like in sumDigits
-    sumTotal = sumTotal + sum[i]; //?
+    sumTotal = sumTotal + num[i]; //?
   }
+  return sumTotal;
 }
 
 
@@ -100,10 +106,23 @@ printPrimes(97);
 
 
 // Section 7
+// THIS ONE IS HARD
 const insertDash = (num) => {
-  // Turn numbers into a string
-  // Insert dashes b/t consecutive odd numbers
-  // ONLY b/t numbers
+  const stringNum = num.toString();
+  const arrNum = stringNum.split('');
+  console.log(arrNum.length)
+  let newArrNum = [];
+  for(let i = 0; i < arrNum.length; i++) {
+    newArrNum[i] = parseInt(arrNum[i]); 
+    console.log(newArrNum);
+  }
+  for(let j = 0; j < newArrNum.length; j++) {
+    console.log(newArrNum[j-1], newArrNum[j]);
+    if(((newArrNum[j - 1] % 2 ) === 1 ) && ((newArrNum[j] % 2) === 1)) {
+      newArrNum.splice(j, 0, '-');
+    }
+  }
+  return newArrNum.join('');
 }
 
  console.log(insertDash(454793));
